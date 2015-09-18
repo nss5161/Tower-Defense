@@ -41,15 +41,19 @@ public class MainFrame extends JFrame{
         
         add(gameTitle, BorderLayout.NORTH);
         gameTitle.setFont(gameTitle.getFont().deriveFont(28.0f));
-
+        
         controlPanel.add(difficultyPanel);
         controlPanel.add(namePanel);
         controlPanel.add(highScorePanel);
         controlPanel.add(instructionPanel);
         
+        difficultyPanel.setBackground(Color.BLUE);
+        difficulty.setForeground(Color.CYAN);
+        difficultyPanel.add(difficulty);
         difficultyPanel.add(easyButton);
         difficultyPanel.add(mediumButton);
         difficultyPanel.add(hardButton);
+        
         easyButton.setSize(d);
         mediumButton.setSize(d);
         hardButton.setSize(d);
