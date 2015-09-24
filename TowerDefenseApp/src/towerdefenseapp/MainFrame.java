@@ -7,8 +7,9 @@ package towerdefenseapp;
 
 import java.awt.*;
 import javax.swing.*;
+import java.awt.event.*; 
 
-public class MainFrame extends JFrame{
+public class MainFrame extends JFrame {
     private JLabel gameTitle = new JLabel("Tower Defense");
     private JLabel difficulty = new JLabel("Select Difficulty");
     private JLabel enterName = new JLabel("Enter Name");
@@ -21,10 +22,10 @@ public class MainFrame extends JFrame{
     
     Dimension d = new Dimension(15, 5);
     
-    private JTextField nameBox = new JTextField(15);
+    private JTextField nameBox = new JTextField(10);
     
-    private final static int FRAME_HEIGHT = 500;
-    private final static int FRAME_WIDTH = 500;
+    private final static int FRAME_HEIGHT = 800;
+    private final static int FRAME_WIDTH = 800;
     
     private JPanel controlPanel = new JPanel(new GridLayout(1, 4));
     private JPanel difficultyPanel = new JPanel();
@@ -36,8 +37,6 @@ public class MainFrame extends JFrame{
         super("Tower Defense Game");
         setLayout(new BorderLayout());
         add(controlPanel, BorderLayout.CENTER);
-        setSize(FRAME_HEIGHT, FRAME_WIDTH);
-        setDefaultCloseOperation(EXIT_ON_CLOSE);
         
         add(gameTitle, BorderLayout.NORTH);
         gameTitle.setFont(gameTitle.getFont().deriveFont(28.0f));
@@ -47,8 +46,8 @@ public class MainFrame extends JFrame{
         controlPanel.add(highScorePanel);
         controlPanel.add(instructionPanel);
         
-        difficultyPanel.setBackground(Color.BLUE);
-        difficulty.setForeground(Color.CYAN);
+        //difficultyPanel.setBackground(Color.BLUE);
+        //difficulty.setForeground(Color.CYAN);
         difficultyPanel.add(difficulty);
         difficultyPanel.add(easyButton);
         difficultyPanel.add(mediumButton);
@@ -65,6 +64,50 @@ public class MainFrame extends JFrame{
         
         instructionPanel.add(instructions);
         
+        Player player = new Player();
+        
+        easyButton.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent evt){
+                GameFrame gf = new GameFrame(player);
+                gf.setVisible(true);
+                setVisible(false);
+            }
+        });
+        
+        mediumButton.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent evt){
+                /*gameTitle.setVisible(false); 
+                controlPanel.setVisible(false);
+                remove(gameTitle);
+                remove(controlPanel);
+                FieldPanel fp = new FieldPanel();
+                ControlPanel cp = new ControlPanel();
+                add(fp);
+                add(cp);*/
+                
+                GameFrame gf = new GameFrame(player);
+                gf.setVisible(true);
+                setVisible(false);
+            }
+        });
+        
+        hardButton.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent evt){
+                GameFrame gf = new GameFrame(player);
+                gf.setVisible(true);
+                setVisible(false);
+            }
+        });
+        
+        
+        nameBox.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent evt) {
+                String playerName = nameBox.getText(); 
+                player.setName(playerName);
+                System.out.println(player.getName()); 
+            }
+        });
+
         setSize(FRAME_HEIGHT, FRAME_WIDTH);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         
