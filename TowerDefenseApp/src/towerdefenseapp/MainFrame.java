@@ -33,24 +33,31 @@ public class MainFrame extends JFrame {
     private JPanel namePanel = new JPanel();
     private JPanel highScorePanel = new JPanel();
     private JPanel instructionPanel = new JPanel();
+    private JPanel titlePanel = new JPanel();
     
     public MainFrame(Player player){
         super("Tower Defense Game");
         setLayout(null);
+        add(titlePanel);
+        titlePanel.setBounds(0, 0, 800, 50);
         add(controlPanel);
-        controlPanel.setBounds(0, 50, FRAME_HEIGHT, FRAME_WIDTH);
+        controlPanel.setBounds(0, 50, FRAME_WIDTH, FRAME_HEIGHT);
         
-        add(gameTitle);
-        gameTitle.setBounds(0, -275, FRAME_HEIGHT, FRAME_WIDTH);
-        gameTitle.setFont(gameTitle.getFont().deriveFont(28.0f));
+        
+        titlePanel.add(gameTitle);
+        titlePanel.setBackground(Color.BLACK);
+        
+        gameTitle.setBounds(0, 50, FRAME_WIDTH, FRAME_HEIGHT);
+        gameTitle.setFont(gameTitle.getFont().deriveFont(28.0f)); 
+        gameTitle.setForeground(Color.WHITE);
         
         controlPanel.add(difficultyPanel);
         controlPanel.add(namePanel);
         controlPanel.add(highScorePanel);
         controlPanel.add(instructionPanel);
         
-        //difficultyPanel.setBackground(Color.BLUE);
-        //difficulty.setForeground(Color.CYAN);
+        difficultyPanel.setBackground(Color.BLACK);
+        difficulty.setForeground(Color.WHITE);
         difficulty.setBounds(30, -36, 100, 100);
         difficultyPanel.setLayout(null);
         easyButton.setBounds(30, 80, 100, 100);
@@ -61,11 +68,17 @@ public class MainFrame extends JFrame {
         difficultyPanel.add(mediumButton);
         difficultyPanel.add(hardButton);
         
+        namePanel.setBackground(Color.BLACK);
+        enterName.setForeground(Color.WHITE);
         namePanel.add(enterName);
         namePanel.add(nameBox);
         
+        highScorePanel.setBackground(Color.BLACK);
+        highScore.setForeground(Color.WHITE);
         highScorePanel.add(highScore);
         
+        instructionPanel.setBackground(Color.BLACK);
+        instructions.setForeground(Color.WHITE);
         instructionPanel.add(instructions);
         
         easyButton.addActionListener(new ActionListener() {
@@ -76,22 +89,10 @@ public class MainFrame extends JFrame {
                         gf.setVisible(true);
                         setVisible(false);
                     } else {
-                        JFrame errorFrame = new JFrame(); 
-                        JLabel error = new JLabel("Please enter a name");
-                        errorFrame.add(error);
-                        errorFrame.setSize(200, 100);
-                        errorFrame.setLocationRelativeTo(null); 
-                        errorFrame.setVisible(true);
-                        errorFrame.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
+                        JOptionPane.showMessageDialog(null, "Please enter a name"); 
                     }
                 } catch (NullPointerException npe) {
-                    JFrame errorFrame = new JFrame(); 
-                    JLabel error = new JLabel("Please enter a name");
-                    errorFrame.add(error);
-                    errorFrame.setSize(200, 100);
-                    errorFrame.setLocationRelativeTo(null); 
-                    errorFrame.setVisible(true);
-                    errorFrame.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
+                    JOptionPane.showMessageDialog(null, "Please enter a name"); 
                 }
             }
         });
@@ -104,22 +105,10 @@ public class MainFrame extends JFrame {
                         gf.setVisible(true);
                         setVisible(false);
                     } else {
-                        JFrame errorFrame = new JFrame(); 
-                        JLabel error = new JLabel("Please enter a name");
-                        errorFrame.add(error);
-                        errorFrame.setSize(200, 100);
-                        errorFrame.setLocationRelativeTo(null); 
-                        errorFrame.setVisible(true);
-                        errorFrame.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
+                        JOptionPane.showMessageDialog(null, "Please enter a name"); 
                     }
                 } catch (NullPointerException npe) {
-                    JFrame errorFrame = new JFrame(); 
-                    JLabel error = new JLabel("Please enter a name");
-                    errorFrame.add(error);
-                    errorFrame.setSize(200, 100);
-                    errorFrame.setLocationRelativeTo(null); 
-                    errorFrame.setVisible(true);
-                    errorFrame.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
+                        JOptionPane.showMessageDialog(null, "Please enter a name"); 
                 }
             }
         });
@@ -132,22 +121,10 @@ public class MainFrame extends JFrame {
                         gf.setVisible(true);
                         setVisible(false);
                     } else {
-                        JFrame errorFrame = new JFrame(); 
-                        JLabel error = new JLabel("Please enter a name");
-                        errorFrame.add(error);
-                        errorFrame.setSize(200, 100);
-                        errorFrame.setLocationRelativeTo(null); 
-                        errorFrame.setVisible(true);
-                        errorFrame.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
+                        JOptionPane.showMessageDialog(null, "Please enter a name"); 
                     }
                 } catch (NullPointerException npe) {
-                    JFrame errorFrame = new JFrame(); 
-                    JLabel error = new JLabel("Please enter a name");
-                    errorFrame.add(error);
-                    errorFrame.setSize(200, 100);
-                    errorFrame.setLocationRelativeTo(null); 
-                    errorFrame.setVisible(true);
-                    errorFrame.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
+                        JOptionPane.showMessageDialog(null, "Please enter a name"); 
                 }
             }
         });
