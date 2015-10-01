@@ -8,6 +8,9 @@ package towerdefenseapp;
 import java.awt.*;
 import javax.swing.*;
 import java.awt.event.*; 
+import static javax.swing.JFrame.EXIT_ON_CLOSE;
+import static javax.swing.WindowConstants.DISPOSE_ON_CLOSE;
+import javax.swing.event.*;
 
 public class MainFrame extends JFrame {
     private JLabel gameTitle = new JLabel("Tower Defense");
@@ -20,8 +23,6 @@ public class MainFrame extends JFrame {
     private JButton mediumButton = new JButton("Medium");
     private JButton hardButton = new JButton("Hard");
     
-    Dimension d = new Dimension(15, 5);
-    
     private JTextField nameBox = new JTextField(10);
     
     private final static int FRAME_HEIGHT = 800;
@@ -33,12 +34,14 @@ public class MainFrame extends JFrame {
     private JPanel highScorePanel = new JPanel();
     private JPanel instructionPanel = new JPanel();
     
-    public MainFrame(){
+    public MainFrame(Player player){
         super("Tower Defense Game");
-        setLayout(new BorderLayout());
-        add(controlPanel, BorderLayout.CENTER);
+        setLayout(null);
+        add(controlPanel);
+        controlPanel.setBounds(0, 50, FRAME_HEIGHT, FRAME_WIDTH);
         
-        add(gameTitle, BorderLayout.NORTH);
+        add(gameTitle);
+        gameTitle.setBounds(0, -275, FRAME_HEIGHT, FRAME_WIDTH);
         gameTitle.setFont(gameTitle.getFont().deriveFont(28.0f));
         
         controlPanel.add(difficultyPanel);
@@ -48,14 +51,15 @@ public class MainFrame extends JFrame {
         
         //difficultyPanel.setBackground(Color.BLUE);
         //difficulty.setForeground(Color.CYAN);
+        difficulty.setBounds(30, -36, 100, 100);
+        difficultyPanel.setLayout(null);
+        easyButton.setBounds(30, 80, 100, 100);
+        mediumButton.setBounds(30, 205, 100, 100);
+        hardButton.setBounds(30, 330, 100, 100);
         difficultyPanel.add(difficulty);
         difficultyPanel.add(easyButton);
         difficultyPanel.add(mediumButton);
         difficultyPanel.add(hardButton);
-        
-        easyButton.setSize(d);
-        mediumButton.setSize(d);
-        hardButton.setSize(d);
         
         namePanel.add(enterName);
         namePanel.add(nameBox);
@@ -64,44 +68,103 @@ public class MainFrame extends JFrame {
         
         instructionPanel.add(instructions);
         
-        Player player = new Player();
-        
         easyButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent evt){
-                GameFrame gf = new GameFrame(player);
-                gf.setVisible(true);
-                setVisible(false);
+                try {
+                    if (!(player.getName().equals(null)) && !(player.getName().equals(""))) {
+                        GameFrame gf = new GameFrame(player);
+                        gf.setVisible(true);
+                        setVisible(false);
+                    } else {
+                        JFrame errorFrame = new JFrame(); 
+                        JLabel error = new JLabel("Please enter a name");
+                        errorFrame.add(error);
+                        errorFrame.setSize(200, 100);
+                        errorFrame.setLocationRelativeTo(null); 
+                        errorFrame.setVisible(true);
+                        errorFrame.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
+                    }
+                } catch (NullPointerException npe) {
+                    JFrame errorFrame = new JFrame(); 
+                    JLabel error = new JLabel("Please enter a name");
+                    errorFrame.add(error);
+                    errorFrame.setSize(200, 100);
+                    errorFrame.setLocationRelativeTo(null); 
+                    errorFrame.setVisible(true);
+                    errorFrame.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
+                }
             }
         });
         
         mediumButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent evt){
-                /*gameTitle.setVisible(false); 
-                controlPanel.setVisible(false);
-                remove(gameTitle);
-                remove(controlPanel);
-                FieldPanel fp = new FieldPanel();
-                ControlPanel cp = new ControlPanel();
-                add(fp);
-                add(cp);*/
-                
-                GameFrame gf = new GameFrame(player);
-                gf.setVisible(true);
-                setVisible(false);
+                try {
+                    if (!(player.getName().equals(null)) && !(player.getName().equals(""))) {
+                        GameFrame gf = new GameFrame(player);
+                        gf.setVisible(true);
+                        setVisible(false);
+                    } else {
+                        JFrame errorFrame = new JFrame(); 
+                        JLabel error = new JLabel("Please enter a name");
+                        errorFrame.add(error);
+                        errorFrame.setSize(200, 100);
+                        errorFrame.setLocationRelativeTo(null); 
+                        errorFrame.setVisible(true);
+                        errorFrame.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
+                    }
+                } catch (NullPointerException npe) {
+                    JFrame errorFrame = new JFrame(); 
+                    JLabel error = new JLabel("Please enter a name");
+                    errorFrame.add(error);
+                    errorFrame.setSize(200, 100);
+                    errorFrame.setLocationRelativeTo(null); 
+                    errorFrame.setVisible(true);
+                    errorFrame.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
+                }
             }
         });
         
         hardButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent evt){
-                GameFrame gf = new GameFrame(player);
-                gf.setVisible(true);
-                setVisible(false);
+                try {
+                    if (!(player.getName().equals(null)) && !(player.getName().equals(""))) {
+                        GameFrame gf = new GameFrame(player);
+                        gf.setVisible(true);
+                        setVisible(false);
+                    } else {
+                        JFrame errorFrame = new JFrame(); 
+                        JLabel error = new JLabel("Please enter a name");
+                        errorFrame.add(error);
+                        errorFrame.setSize(200, 100);
+                        errorFrame.setLocationRelativeTo(null); 
+                        errorFrame.setVisible(true);
+                        errorFrame.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
+                    }
+                } catch (NullPointerException npe) {
+                    JFrame errorFrame = new JFrame(); 
+                    JLabel error = new JLabel("Please enter a name");
+                    errorFrame.add(error);
+                    errorFrame.setSize(200, 100);
+                    errorFrame.setLocationRelativeTo(null); 
+                    errorFrame.setVisible(true);
+                    errorFrame.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
+                }
             }
         });
         
         
-        nameBox.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent evt) {
+        nameBox.getDocument().addDocumentListener(new DocumentListener() {
+            public void changedUpdate(DocumentEvent evt) {
+                String playerName = nameBox.getText(); 
+                player.setName(playerName);
+                System.out.println(player.getName()); 
+            }
+            public void removeUpdate(DocumentEvent evt) {
+                String playerName = nameBox.getText(); 
+                player.setName(playerName);
+                System.out.println(player.getName()); 
+            }
+            public void insertUpdate(DocumentEvent evt) {
                 String playerName = nameBox.getText(); 
                 player.setName(playerName);
                 System.out.println(player.getName()); 
@@ -109,8 +172,9 @@ public class MainFrame extends JFrame {
         });
 
         setSize(FRAME_HEIGHT, FRAME_WIDTH);
+        setLocationRelativeTo(null);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
-        
+        setResizable(true);
     }
 
 }
