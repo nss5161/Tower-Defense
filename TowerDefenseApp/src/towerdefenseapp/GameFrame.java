@@ -37,7 +37,7 @@ public class GameFrame extends JFrame {
         score.setText("Score: " + Integer.toString(player.getScore()));
         
         controlPanel.setBackground(Color.LIGHT_GRAY);
-        controlPanel.setBounds(550, 0, 250, 800);
+        controlPanel.setBounds(550, 0, 250, FRAME_WIDTH);
         controlPanel.add(name); 
         controlPanel.add(health); 
         controlPanel.add(score); 
@@ -46,7 +46,8 @@ public class GameFrame extends JFrame {
         add(controlPanel);
         
         setSize(FRAME_HEIGHT, FRAME_WIDTH);
+        setLocationRelativeTo(null);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
-        
+        setResizable(true);
     }
 }

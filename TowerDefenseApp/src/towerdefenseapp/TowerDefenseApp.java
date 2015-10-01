@@ -11,8 +11,10 @@ import java.awt.event.*;
 
 public class TowerDefenseApp {
     public static void main(String[] args) {
-        MainFrame frame = new MainFrame();
+        Player player = new Player();
+        MainFrame frame = new MainFrame(player);
         frame.setVisible(true);
+
     }
     
 }

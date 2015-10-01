@@ -11,4 +11,25 @@ package towerdefenseapp;
  */
 public class Weapon {
     
+    private int hit;
+    private int cost;
+    private double range;
+    
+    public Weapon(int initHit, int initCost, int initRange) {
+        hit = initHit;
+        cost = initCost;
+        range = initRange;
+    }
+    
+    public int getHit() {
+        return hit;
+    }
+    
+    public int getCost() {
+        return cost;
+    }
+    
+    public double getRange() {
+        return range;
+    }
 }

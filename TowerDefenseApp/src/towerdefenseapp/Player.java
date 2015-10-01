@@ -63,4 +63,8 @@ public class Player {
     public String getDifficulty() {
         return selectedDifficulty;
     }
+    
+    public void buyWeapon() {
+        
+    }
 }
