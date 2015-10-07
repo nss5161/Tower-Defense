@@ -14,8 +14,8 @@ import javax.swing.*;
  */
 public class GameFrame extends JFrame {
     
-    private JPanel fieldPanel = new JPanel();
-    private JPanel controlPanel = new JPanel();
+    private JPanel fieldPanel = new FieldPanel();
+    private JPanel controlPanel = new ControlPanel();
     
     private final static int FRAME_HEIGHT = 800;
     private final static int FRAME_WIDTH = 800;
@@ -24,23 +24,27 @@ public class GameFrame extends JFrame {
     private JLabel health = new JLabel();
     private JLabel score = new JLabel();
     
+    private JButton smallWeapon = new JButton();
+    private JButton mediumWeapon = new JButton();
+    private JButton largeWeapon = new JButton(); 
     
+    private JButton start = new JButton("Start");
     
     public GameFrame(Player player) {
         setLayout(null);
-        
-        fieldPanel.setBackground(Color.DARK_GRAY);
-        fieldPanel.setBounds(0, 0, 550, 800);
+        controlPanel.setLayout(null);
         
         name.setText("Name: " + player.getName());
         health.setText("Health: " + Integer.toString(player.getHealth())); 
         score.setText("Score: " + Integer.toString(player.getScore()));
         
-        controlPanel.setBackground(Color.LIGHT_GRAY);
-        controlPanel.setBounds(550, 0, 250, FRAME_WIDTH);
+        name.setBounds(0, 10, 100, 20);
+        health.setBounds(0, 30, 100, 20);
+        score.setBounds(0, 50, 100, 20);
+
         controlPanel.add(name); 
         controlPanel.add(health); 
-        controlPanel.add(score); 
+        controlPanel.add(score);
         
         add(fieldPanel);
         add(controlPanel);

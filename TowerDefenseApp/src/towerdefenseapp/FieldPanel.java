@@ -14,17 +14,36 @@ import javax.swing.*;
  */
 public class FieldPanel extends JPanel {
     
-    //private JPanel gamePanel = new JPanel(); 
-    //private JPanel playerPanel = new JPanel(); 
     
     public FieldPanel() {
         setLayout(null);
-        setBackground(Color.DARK_GRAY);
-        //playerPanel.setBackground(Color.BLUE);
+        setBackground(Color.BLACK);
+        setBounds(0, 0, 550, 800);
+    }
+    
+    public void paintComponent(Graphics g) {
+        super.paintComponent(g);
         
-        setBounds(0, 0, 350, 500);
-        //playerPanel.setBounds(350, 0, 150, 500);
-        //add(gamePanel);
-        //add(playerPanel); 
+        g.setColor(Color.BLUE);
+        g.fillRect(0, 0, 50, 50);
+        g.setColor(Color.BLUE);
+        g.fillRect(0, 0, 50, 50);
+        g.setColor(Color.BLUE);
+        g.fillRect(0, 0, 50, 50);
+        g.setColor(Color.BLUE);
+        g.fillRect(0, 0, 50, 50);
+        g.setColor(Color.BLUE);
+        g.fillRect(0, 0, 50, 50);
+        g.setColor(Color.BLUE);
+        g.fillRect(0, 0, 50, 50);
+        g.setColor(Color.BLUE);
+        g.fillRect(0, 0, 50, 50);
+        g.setColor(Color.BLUE);
+        g.fillRect(0, 0, 50, 50);
+        g.setColor(Color.BLUE);
+        g.fillRect(0, 0, 50, 50);
+        g.setColor(Color.BLUE);
+        g.fillRect(0, 0, 50, 50);
+        
     }
 }
