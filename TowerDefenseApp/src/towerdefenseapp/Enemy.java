@@ -14,22 +14,19 @@ import java.awt.event.ActionListener;
  *
  * @author dlt5206
  */
-public class Enemy extends JPanel {
+public class Enemy extends Rectangle {
     
     private int health;
     private double speed;
     private int value;
-    private int xPos;
-    private int yPos;
     
-    public Enemy(Graphics g) {
+    public Enemy() {
+        super(150, -10, 10, 10);
         health = 1;
         speed = 1;
         value = 1;
-        xPos = 150;
-        yPos = -10;
-        g.setColor(Color.BLACK);
-        g.fillRect(xPos, yPos, 10, 10);
+        //g.setColor(Color.BLACK);
+        //g.fillRect((int)xPos, (int)yPos, 10, 10);
     }
     
     public int getHealth() {
@@ -44,19 +41,4 @@ public class Enemy extends JPanel {
         return value; 
     }
     
-    public void move(Graphics g, int x, int y) {
-        xPos = xPos + x;
-        yPos = yPos + y;
-        g.setColor(Color.BLACK);
-        g.fillRect(xPos + x, yPos + y, 10, 10);
-
-    }
-    
-    public int getX() {
-        return xPos;
-    }
-    
-    public int getY() {
-        return yPos;
-    }
 }

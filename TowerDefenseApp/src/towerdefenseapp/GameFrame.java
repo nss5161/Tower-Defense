@@ -7,6 +7,8 @@ package towerdefenseapp;
 
 import java.awt.*;
 import javax.swing.*;
+import javax.swing.event.*;
+import java.awt.event.*; 
 
 /**
  *
@@ -14,8 +16,9 @@ import javax.swing.*;
  */
 public class GameFrame extends JFrame {
     
-    private JPanel fieldPanel = new FieldPanel();
+    private JPanel enemyPanel = new EnemyPanel();
     private JPanel controlPanel = new ControlPanel();
+    private JPanel fieldPanel = new FieldPanel();
     
     private final static int FRAME_HEIGHT = 800;
     private final static int FRAME_WIDTH = 800;
@@ -28,11 +31,15 @@ public class GameFrame extends JFrame {
     private JButton mediumWeapon = new JButton();
     private JButton largeWeapon = new JButton(); 
     
-    private JButton start = new JButton("Start");
+
+    
     
     public GameFrame(Player player) {
+        
         setLayout(null);
         controlPanel.setLayout(null);
+        
+
         
         name.setText("Name: " + player.getName());
         health.setText("Health: " + Integer.toString(player.getHealth())); 
@@ -46,12 +53,16 @@ public class GameFrame extends JFrame {
         controlPanel.add(health); 
         controlPanel.add(score);
         
+        
         add(fieldPanel);
         add(controlPanel);
+
         
         setSize(FRAME_HEIGHT, FRAME_WIDTH);
         setLocationRelativeTo(null);
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         setResizable(true);
-    }
+        
+
+     }
 }

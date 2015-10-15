@@ -6,45 +6,27 @@
 package towerdefenseapp;
 
 import java.awt.*;
-import java.awt.event.ActionEvent;
 import javax.swing.*;
+import javax.swing.event.*;
 import java.awt.event.*; 
 
 /**
  *
  * @author dlt5206
  */
-public class ControlPanel extends JPanel implements ActionListener {
+public class EnemyPanel extends JPanel implements ActionListener {
     
-    private final static int FRAME_HEIGHT = 800;
-    
-    private Timer t1; 
     private JButton start = new JButton("Start");
-    
-    private JButton smallWeapon = new JButton();
-    private JButton mediumWeapon = new JButton();
-    private JButton largeWeapon = new JButton(); 
-    
-    
+    private Timer t1; 
     private Enemy en1 = new Enemy();
     
-    public ControlPanel() {
-        setBackground(Color.LIGHT_GRAY);
-        setBounds(600, 0, 200, FRAME_HEIGHT);
-        
-        t1 = new Timer(10, this);
-        
+    public EnemyPanel() {
         start.setBounds(50, 575, 100, 100); 
         start.addActionListener(this); 
-        
-        smallWeapon.setBounds(50, 120, 100, 100);
-        mediumWeapon.setBounds(50, 240, 100, 100);
-        largeWeapon.setBounds(50, 360, 100, 100);
-        
+        setLayout(null);
+        t1 = new Timer(10, this);
         add(start);
-        add(smallWeapon);
-        add(mediumWeapon);
-        add(largeWeapon);
+        setBounds(0, 0, 800, 800);
     }
     
     /*public void paintComponent(Graphics g) {
